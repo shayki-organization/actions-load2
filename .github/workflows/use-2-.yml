@@ -1,13 +1,14 @@
 name: Test Reuse 2
-
-on:
-  workflow_dispatch:
+"on":
+  workflow_dispatch: null
   schedule:
-    - cron: '*/17 * * * *'
-
+    - cron: "*/17 * * * *"
 jobs:
   deploy-env:
     name: Create environment
     uses: ./.github/workflows/test.yml
     with:
       test: test
+    steps:
+      - name: Add required action
+        uses: actions/checkout@v42
